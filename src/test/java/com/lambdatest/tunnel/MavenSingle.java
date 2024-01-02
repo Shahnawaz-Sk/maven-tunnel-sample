@@ -20,6 +20,7 @@ public class MavenSingle implements IExecutionListener {
 
   String username = System.getenv("LT_USERNAME");
   String access_key = System.getenv("LT_ACCESS_KEY");
+  String tunnel_name = System.getenv("TUNN_NAME");
 
   @BeforeTest
   @org.testng.annotations.Parameters(value = { "browser", "version", "platform", "resolution" })
@@ -34,7 +35,7 @@ public class MavenSingle implements IExecutionListener {
     capabilities.setCapability("network", true);
     capabilities.setCapability("console", true);
     capabilities.setCapability("visual", true);
-    capabilities.setCapability("tunnelName", "MavenSingle");
+    capabilities.setCapability("tunnelName", tunnel_name);
 
     // create tunnel instance
     t = new Tunnel();
